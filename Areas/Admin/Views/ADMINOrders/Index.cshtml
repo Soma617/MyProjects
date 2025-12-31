@@ -1,0 +1,41 @@
+﻿@model List<Interview1.Models.Entities.Order>
+
+@{
+    ViewData["Title"] = "訂單管理";
+}
+
+<h2>訂單管理</h2>
+
+<table border="1">
+    <tr>
+        <th>訂單編號</th>
+        <th>訂單日期</th>
+        <th>會員編號</th>
+        <th>訂單總金額</th>
+        <th>訂單狀態</th>
+        <th>付款方式</th>
+        <th>出貨狀態</th>
+        <th>備註</th>
+        <th>操作</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.OrderId</td>
+            <td>@item.OrderDate</td>
+            <td>@item.MemberId</td>
+            <td>@item.TotalAmount</td>
+            <td>@item.OrderStatus</td>
+            <td>@item.PaymentMethod</td>
+            <td>@item.ShippingStatus</td>
+            <td>@item.Note</td>
+        </tr>
+        <tr>
+            <td><a asp-area="Admin" asp-controller="ADMINOrders" asp-action="Details" asp-route-id="@item.OrderId">查詢</a></td>
+            <td><a asp-area="Admin" asp-controller="ADMINOrders" asp-action="Edit" asp-route-id="@item.OrderId">編輯</a></td>
+            <td><a asp-area="Admin" asp-controller="ADMINOrders" asp-action="Delete" asp-route-id="@item.OrderId">刪除</a></td>
+        </tr>
+    }
+    
+</table>

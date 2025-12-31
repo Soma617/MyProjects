@@ -1,0 +1,89 @@
+﻿@* 這是我後台(ADMIN)View專用的Layout => 決定在View顯示這個Layout *@
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"]</title>
+    @* ViewData跟ViewBag一樣是用來儲存跟傳遞值的容器 *@
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .admin-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            width: 220px;
+            background-color: black;
+            color: white;
+            padding: 20px;
+        }
+
+            .sidebar h2 {
+                margin-top: 0;
+                font-size: 30px;
+            }
+
+            .sidebar a {
+                display: block;
+                color: white;
+                text-decoration: none;
+                margin: 20px;
+            }
+
+                .sidebar a:hover {
+                    text-decoration: underline;
+                    transform: scale(1.1);
+                    color: greenyellow;
+                }
+
+        .content {
+            flex: 1;
+            padding: 30px;
+            background-color: #f5f5f5;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="admin-container">
+
+        <div class="sidebar">
+            <h2>後台管理</h2>
+
+            <a asp-area="Admin"
+               asp-controller="ADMINOrders"
+               asp-action="Index">訂單管理系統
+            </a>
+            <a asp-area="Admin"
+               asp-controller="ADMINProducts"
+               asp-action="Index">
+                商品管理系統
+            </a>
+            <a asp-area="Admin"
+               asp-controller="ADMINMembers"
+               asp-action="Index">
+                會員管理系統
+            </a>
+            <a asp-area="Admin"
+               asp-controller="ADMINLogin"
+               asp-action="Index">
+                管理者登入
+            </a>
+        </div>
+
+        <div class="content">
+            @RenderBody()
+            @* 把這次的View結果塞進RenderBody *@
+        </div>
+
+    </div>
+
+</body>
+</html>

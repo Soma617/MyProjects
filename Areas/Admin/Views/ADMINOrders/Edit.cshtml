@@ -1,0 +1,52 @@
+﻿@model Interview1.Models.Entities.Order
+
+@{
+    ViewData["Title"] = "訂單編輯";
+}
+
+<h2>修改訂單</h2>
+
+<form method="post">
+    <input type="hidden" asp-for="OrderId" />
+
+    <p>
+        訂單日期：
+        <input asp-for="OrderDate" />
+    </p>
+
+    <p>
+        會員編號：
+        <input asp-for="MemberId" />
+    </p>
+
+    <p>
+        訂單金額：
+        <input asp-for="TotalAmount" />
+    </p>
+
+    <p>
+        訂單狀態：
+        <input asp-for="OrderStatus" />
+    </p>
+
+    <p>
+        付款方式：
+        <input asp-for="PaymentMethod" />
+    </p>
+
+    <p>
+        出貨狀態：
+        <input asp-for="ShippingStatus" />
+    </p>
+
+    <p>
+        備註：
+        <input asp-for="Note" />
+    </p>
+
+    <button type="submit">儲存</button>
+</form>
+
+<a asp-area="Admin" asp-controller="ADMINOrders" asp-action="Index">
+    返回訂單總覽
+</a>
